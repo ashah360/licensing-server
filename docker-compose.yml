@@ -1,0 +1,24 @@
+# DON'T set quotes on anything while exporting - otherwise it exports quotes too
+# e.g. `export meme="MEME" -> "MEME", not MEME`
+
+version: '2'
+services:
+    app:
+        build: .
+        restart: always
+        ports:
+            - 8080:80
+        environment:
+            - MONGODB_URI=mongodb://mongo:27017
+# IF we use mLab don't need rest of these lines
+#        links:
+#            - mongo
+#        depends_on:
+#            - mongo
+#    mongo:
+#        image: mongo:latest
+#        restart: always
+#        volumes:
+#            - /home/ubuntu/data:/data/db
+#        ports:
+#            - 27017:27017
